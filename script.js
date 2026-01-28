@@ -1,10 +1,37 @@
 const clock = document.getElementById("time");
 
-function currentTime() {}
+let date;
 
-setInterval(() => {
-  const date = new Date();
-  let dateString = date.toLocaleTimeString();
+function currentTimeCivil() {
+  setInterval(() => {
+    date = new Date();
+    let dateString = date.toLocaleTimeString();
 
-  clock.textContent = dateString;
-});
+    clock.textContent = dateString;
+  });
+}
+function currentTimeMilitary() {
+  setInterval(() => {
+    date = new Date();
+
+    let ampm;
+
+    if (date.getHours >= 12) {
+      ampm = "PM";
+    } else {
+      ampm = "AM";
+    }
+
+    dateTimeMilitary =
+      date.getHours() +
+      ":" +
+      date.getMinutes() +
+      ":" +
+      date.getSeconds() +
+      " " +
+      ampm;
+    clock.textContent = dateTimeMilitary;
+  });
+}
+
+currentTimeMilitary();
