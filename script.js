@@ -1,7 +1,19 @@
 const clock = document.getElementById("time");
 const format = document.getElementById("format-switch");
 
-let date;
+const day = document.getElementById("date");
+
+let dayList = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+
+let date = new Date();
 
 let fetchCivil = true;
 
@@ -15,7 +27,6 @@ function currentTimeCivil() {
   if (!fetchCivil) return;
 
   civil = setInterval(() => {
-    date = new Date();
     dateString = date.toLocaleTimeString();
     clock.textContent = dateString;
   }, 100);
@@ -25,8 +36,6 @@ function currentTimeMilitary() {
   if (!fetchMilitary) return;
 
   military = setInterval(() => {
-    date = new Date();
-
     let ampm;
 
     if (date.getHours() >= 12) {
@@ -63,6 +72,11 @@ function switchTime() {
   }
 }
 
+function fetchDay() {
+  day.textContent = dayList[date.getDay()];
+}
+
 format.addEventListener("click", switchTime);
 
 currentTimeCivil();
+fetchDay();
