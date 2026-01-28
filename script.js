@@ -4,7 +4,9 @@ function currentTime() {
   const date = new Date();
   dateTwoFour = date.toTimeString();
 
-  dateTwoFour = dateTwoFour[0];
+  dateTwoFour = dateTwoFour.split(" ")[0];
+
+  clock.textContent = dateTwoFour;
 }
 
 setInterval(currentTime, 1000);
