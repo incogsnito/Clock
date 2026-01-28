@@ -9,7 +9,7 @@ let fetchMilitary = false;
 
 let miitary;
 
-let civil;
+let civil = true;
 
 function currentTimeCivil() {
   if (!fetchCivil) return;
@@ -18,7 +18,7 @@ function currentTimeCivil() {
     date = new Date();
     dateString = date.toLocaleTimeString();
     clock.textContent = dateString;
-  });
+  }, 100);
 }
 
 function currentTimeMilitary() {
@@ -44,21 +44,25 @@ function currentTimeMilitary() {
       " " +
       ampm;
     clock.textContent = dateTimeMilitary;
-  });
+  }, 100);
 }
 
-format.addEventListener("click", () => {
+function switchTime() {
   if (fetchCivil) {
     fetchCivil = false;
     fetchMilitary = true;
     clearInterval(civil);
     currentTimeMilitary();
+    format.innerText = "12HR";
   } else if (fetchMilitary) {
     fetchMilitary = false;
     fetchCivil = true;
     clearInterval(military);
     currentTimeCivil();
+    format.innerText = "24HR";
   }
-});
+}
 
-currentTimeMilitary();
+format.addEventListener("click", switchTime);
+
+currentTimeCivil();
