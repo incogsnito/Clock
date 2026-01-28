@@ -11,24 +11,5 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-}
-
-.circle {
-  border: 2px solid black;
-  display: flex;
-  align-items: center;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  position: relative;
-}
-
-.center {
-  position: absolute;
-  background: black;
-  top: 0px;
-  left: 0px;
-  transform: translate(-50%, -50%);
-  width: 3px;
-  height: 3px;
+  gap: 1em;
 }
