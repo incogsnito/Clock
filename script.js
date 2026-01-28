@@ -2,7 +2,7 @@ const clock = document.getElementById("time");
 
 function currentTime() {
   const date = new Date();
-  let dateString = date.toTimeString();
+  let dateString = date.toLocaleTimeString();
 
   dateTwoFour = dateString.split(" ")[0];
 
