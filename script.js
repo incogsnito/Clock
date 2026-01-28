@@ -2,11 +2,11 @@ const clock = document.getElementById("time");
 
 function currentTime() {
   const date = new Date();
-  dateTwoFour = date.toTimeString();
+  let dateString = date.toTimeString();
 
-  dateTwoFour = dateTwoFour.split(" ")[0];
+  dateTwoFour = dateString.split(" ")[0];
 
   clock.textContent = dateTwoFour;
 }
 
-setInterval(currentTime, 1000);
+setInterval(currentTime);
