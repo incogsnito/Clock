@@ -3,7 +3,7 @@ const format = document.getElementById("format-switch");
 
 const day = document.getElementById("date");
 
-let dayList = [
+const dayList = [
   "Sunday",
   "Monday",
   "Tuesday",
@@ -11,6 +11,21 @@ let dayList = [
   "Thursday",
   "Friday",
   "Saturday",
+];
+
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
 ];
 
 let date = new Date();
@@ -27,6 +42,7 @@ function currentTimeCivil() {
   if (!fetchCivil) return;
 
   civil = setInterval(() => {
+    date = new Date();
     dateString = date.toLocaleTimeString();
     clock.textContent = dateString;
   }, 100);
@@ -36,6 +52,8 @@ function currentTimeMilitary() {
   if (!fetchMilitary) return;
 
   military = setInterval(() => {
+    date = new Date();
+
     let ampm;
 
     if (date.getHours() >= 12) {
@@ -73,7 +91,14 @@ function switchTime() {
 }
 
 function fetchDay() {
-  day.textContent = dayList[date.getDay()];
+  setInterval(() => {
+    day.textContent =
+      dayList[date.getDay()] +
+      ", " +
+      months[date.getMonth()] +
+      " " +
+      date.getDate();
+  }, 1000);
 }
 
 format.addEventListener("click", switchTime);
